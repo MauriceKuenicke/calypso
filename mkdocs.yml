@@ -1,0 +1,96 @@
+# Project information
+site_name: UserAuth-MicroService
+site_url: https://mauricekuenicke.github.io/UserAuth-MicroService/
+site_author: Maurice Künicke
+edit_uri: edit/main/docs/
+
+# Repository
+repo_name: View Source Code
+repo_url: https://github.com/MauriceKuenicke/UserAuth-MicroService
+
+# Copyright
+copyright: Copyright &copy; 2023 Maurice Künicke
+
+# Configuration
+theme:
+  name: material
+
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.highlight
+    - search.share
+    - announce.dismiss
+    - navigation.footer
+    - content.action.edit
+    - content.action.view
+    - content.code.copy
+    - content.code.annotate
+
+# Customization
+extra:
+  social:
+      - icon: fontawesome/brands/github
+        link: https://github.com/MauriceKuenicke
+
+# Page Tree
+nav:
+  - Home: index.md
+  - Development: 
+        Pre-Commit Hooks: development/pre-commit-hooks.md
+        Documentation: development/documentation.md
+
+# Plugins
+plugins:
+  - search
+  - tags
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - footnotes
+  - md_in_html
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
