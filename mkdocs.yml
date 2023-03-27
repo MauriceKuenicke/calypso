@@ -63,10 +63,9 @@ extra:
 # Page Tree
 nav:
   - Home: index.md
-  - Getting Started:
-    - Another Test: getting_started/index.md
-    - Another Test: getting_started/index.md
-  - Tutorial: test/index.md
+  - Development: 
+        Pre-Commit Hooks: development/pre-commit-hooks.md
+        Documentation: development/documentation.md
 
 # Plugins
 plugins:
