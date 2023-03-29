@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://mauricekuenicke.github.io/calpyso/"><img src="docs/assets/logo/svg/Color logo - no background.svg" alt="Calypso" width="50%"></a>
+  <a href="https://mauricekuenicke.github.io/calpyso/"><img src="docs/assets/logo/svg/Color logo - no background.svg" alt="Calypso" width="60%"></a>
 </p>
 
 <p align="center">
