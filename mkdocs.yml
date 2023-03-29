@@ -1,12 +1,12 @@
 # Project information
-site_name: UserAuth-MicroService
-site_url: https://mauricekuenicke.github.io/UserAuth-MicroService/
+site_name: Calypso
+site_url: https://mauricekuenicke.github.io/calypso/
 site_author: Maurice Künicke
 edit_uri: edit/main/docs/
 
 # Repository
-repo_name: View Source Code
-repo_url: https://github.com/MauriceKuenicke/UserAuth-MicroService
+repo_name: MauriceKuenicke/calypso
+repo_url: https://github.com/MauriceKuenicke/calypso
 
 # Copyright
 copyright: Copyright &copy; 2023 Maurice Künicke
@@ -14,6 +14,7 @@ copyright: Copyright &copy; 2023 Maurice Künicke
 # Configuration
 theme:
   name: material
+  logo: 'assets/logo/svg/White logo - no background.svg'
 
   palette:
     # Palette toggle for light mode
@@ -64,8 +65,8 @@ extra:
 nav:
   - Home: index.md
   - Development: 
-        Pre-Commit Hooks: development/pre-commit-hooks.md
-        Documentation: development/documentation.md
+      - Pre-Commit Hooks: development/pre-commit-hooks.md
+      - Documentation: development/documentation.md
 
 # Plugins
 plugins:
