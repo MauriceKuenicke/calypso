@@ -2,7 +2,7 @@ import bcrypt
 
 ENCODING = "UTF-8"
 
-def encrypt_password(password: str):
+def encrypt_password(password: str) -> str:
     """Encrypt the password with a randomly generated salt.
 
     Args:
