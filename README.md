@@ -10,6 +10,9 @@
 <a href="https://github.com/MauriceKuenicke/calypso/actions/workflows/cicd.yml?query=workflow%3ACICD+branch%3Amain++" target="_blank">
     <img src="https://github.com/MauriceKuenicke/calypso/actions/workflows/cicd.yml/badge.svg?branch=main" alt="Test">
 </a>
+<a href="https://codecov.io/gh/MauriceKuenicke/calypso" > 
+    <img src="https://codecov.io/gh/MauriceKuenicke/calypso/branch/main/graph/badge.svg?token=NYH162MDJD"/> 
+</a>
 </p>
 
 ---
