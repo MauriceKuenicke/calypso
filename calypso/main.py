@@ -8,7 +8,7 @@ app.middleware("http")(log_requests_middleware)
 
 
 @app.get("/")
-def read_root(rid: str = Depends(deps.request_id)) -> dict[str, str]:
+def read_root(rid: str = Depends(deps.extract_request_id)) -> dict[str, str]:
     """Test Endpoint."""
     CalypsoLogger.debug("Hello World!", extra={"idem": rid})
     return {"Hello": "World"}
