@@ -5,7 +5,10 @@ import random
 import string
 import time
 
-async def log_requests_middleware(request: Request, call_next: Callable[[Request], Awaitable[Response]]) -> Response:
+
+async def log_requests_middleware(
+    request: Request, call_next: Callable[[Request], Awaitable[Response]]
+) -> Response:
     """Middleware function that logs requests and responses.
 
     Args:
@@ -20,23 +23,26 @@ async def log_requests_middleware(request: Request, call_next: Callable[[Request
 
     """
     # Generate request ID and append it to the header information
-    idem = ''.join(random.choices(string.ascii_uppercase + string.digits, k=10))
+    idem = "".join(random.choices(string.ascii_uppercase + string.digits, k=10))
     request.headers.__dict__["_list"].append(
-            (
-                "request-ident".encode(),
-                f"{idem}".encode(),
-            )
+        (
+            "request-ident".encode(),
+            f"{idem}".encode(),
         )
-    
+    )
 
-    CalypsoLogger.info(f"{request.method} Request at {request.url.path}", extra={"idem": idem})
+    CalypsoLogger.info(
+        f"{request.method} Request at {request.url.path}", extra={"idem": idem}
+    )
 
     start_time = time.time()
     response = await call_next(request)
     process_time = (time.time() - start_time) * 1000
-    formatted_process_time = '{0:.2f}'.format(process_time)
+    formatted_process_time = "{0:.2f}".format(process_time)
 
-    CalypsoLogger.info(f"Completed in: {formatted_process_time}ms", extra={"idem": idem})
+    CalypsoLogger.info(
+        f"Completed in: {formatted_process_time}ms", extra={"idem": idem}
+    )
     CalypsoLogger.info(f"Status Code: {response.status_code}", extra={"idem": idem})
-    
+
     return response

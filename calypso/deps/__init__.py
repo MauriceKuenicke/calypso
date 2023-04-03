@@ -1,5 +1,6 @@
 from fastapi import Request
 
+
 def request_id(request: Request) -> str:
     """Extract the request identifier from the header information.
 
