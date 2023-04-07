@@ -13,7 +13,8 @@ async def log_requests_middleware(
 
     Args:
         request (fastapi.Request): The incoming request object.
-        call_next (Callable): A callable that takes the request object and returns a response object.
+        call_next (Callable): A callable that takes the request object
+        and returns a response object.
 
     Returns:
         fastapi.Response: The outgoing response object.
@@ -32,7 +33,8 @@ async def log_requests_middleware(
     )
 
     CalypsoLogger.info(
-        f"{request.method} Request at {request.url.path}", extra={"idem": idem}
+        f"{request.method} Request at {request.url.path}",
+        extra={"idem": idem, "mod": __name__},
     )
 
     start_time = time.time()
@@ -41,8 +43,11 @@ async def log_requests_middleware(
     formatted_process_time = "{0:.2f}".format(process_time)
 
     CalypsoLogger.info(
-        f"Completed in: {formatted_process_time}ms", extra={"idem": idem}
+        f"Completed in: {formatted_process_time}ms",
+        extra={"idem": idem, "mod": __name__},
     )
-    CalypsoLogger.info(f"Status Code: {response.status_code}", extra={"idem": idem})
+    CalypsoLogger.info(
+        f"Status Code: {response.status_code}", extra={"idem": idem, "mod": __name__}
+    )
 
     return response

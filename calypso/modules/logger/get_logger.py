@@ -12,7 +12,7 @@ LOGLEVEL = os.getenv("LOGLEVEL", "INFO").upper()
 
 
 def get_logger(name: str, filename: str, level: str) -> logging.Logger:
-    """Return a new logger object with the specified name, logging level, and output file.
+    """Return a new logger instance.
 
     Args:
         name(str): The name of the logger.
@@ -20,12 +20,13 @@ def get_logger(name: str, filename: str, level: str) -> logging.Logger:
         level(str): The logging level for the logger.
 
     Returns:
-        logging.Logger: A logger object with the specified name, logging level, and output file.
+        logging.Logger: A logger object with the specified name,
+        logging level, and output file.
 
     """
     logging.Formatter.converter = time.gmtime
     formatter = logging.Formatter(
-        "%(asctime)s - %(name)s - %(levelname)s - [%(idem)s] - %(message)s",
+        "%(asctime)s - %(mod)s - %(levelname)s - [%(idem)s] - %(message)s",
         "%Y-%m-%d %H:%M:%S",
     )
     log_handler = logging.handlers.TimedRotatingFileHandler(

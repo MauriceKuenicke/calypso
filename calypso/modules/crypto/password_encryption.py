@@ -26,7 +26,8 @@ def authenticate_password(password: str, hash: str) -> bool:
         hash (str): Encrypted hash value to validate the password against
 
     Returns:
-        bool: Result of the authentication. `True` if password is valid. Otherweise `False`.
+        bool: Result of the authentication. `True` if
+        password is valid. Otherweise `False`.
 
     """
     password_encoded = password.encode(ENCODING)
