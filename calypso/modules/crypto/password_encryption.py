@@ -2,6 +2,7 @@ import bcrypt
 
 ENCODING = "UTF-8"
 
+
 def encrypt_password(password: str) -> str:
     """Encrypt the password with a randomly generated salt.
 
@@ -16,6 +17,7 @@ def encrypt_password(password: str) -> str:
     hashed = bcrypt.hashpw(password_encoded, bcrypt.gensalt())
     return hashed.decode(ENCODING)
 
+
 def authenticate_password(password: str, hash: str) -> bool:
     """Validate whether the input password matches the encrypted hash value.
 
@@ -24,7 +26,8 @@ def authenticate_password(password: str, hash: str) -> bool:
         hash (str): Encrypted hash value to validate the password against
 
     Returns:
-        bool: Result of the authentication. `True` if password is valid. Otherweise `False`.
+        bool: Result of the authentication. `True` if
+        password is valid. Otherweise `False`.
 
     """
     password_encoded = password.encode(ENCODING)

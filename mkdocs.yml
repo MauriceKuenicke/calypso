@@ -14,14 +14,14 @@ copyright: Copyright &copy; 2023 Maurice Künicke
 # Configuration
 theme:
   name: material
-  logo: 'assets/logo/svg/White logo - no background.svg'
+  logo: 'assets/logo/svg/Black logo - no background.svg'
 
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: deep orange
-      accent: deep orange
+      primary: orange
+      accent: orange
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
@@ -29,8 +29,8 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: deep orange
-      accent: deep orange
+      primary: orange
+      accent: orange
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
