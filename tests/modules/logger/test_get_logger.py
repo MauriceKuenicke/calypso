@@ -2,10 +2,11 @@ import logging
 import pytest
 from calypso.modules.logger.get_logger import get_logger
 from typing import Any
+from pytest_mock import MockerFixture
 
 
 @pytest.fixture
-def mock_timed_rotating_file_handler(mocker: Any) -> Any:
+def mock_timed_rotating_file_handler(mocker: MockerFixture) -> Any:
     """Return mocked TimedRotatingFileHandler."""
     return mocker.patch("logging.handlers.TimedRotatingFileHandler")
 
