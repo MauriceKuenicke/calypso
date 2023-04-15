@@ -1,3 +1,33 @@
+[tool.poetry]
+name = "calypso"
+version = "0.0.1"
+description = "Securely manage user authentication with a simple API interface. Lightweight, scalable, and customizable for small to medium-sized apps. Integrate with ease and free your application from complex authentication frameworks. "
+authors = ["Maurice Künicke"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.95.1"
+bcrypt = "^4.0.1"
+
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.4.2"
+mkdocs-material = "^9.1.6"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+pytest-cov = "^4.0.0"
+pytest-asyncio = "^0.21.0"
+mypy = "^1.2.0"
+flake8 = "^6.0.0"
+black = "^23.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 line-length = 88
 include = '\.pyi?$'
