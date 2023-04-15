@@ -1,8 +1,9 @@
-from fastapi import FastAPI, Depends
-from .middleware import log_requests_middleware
-from calypso.modules.logger import CalypsoLogger
 from calypso import deps
+from calypso.modules.logger import CalypsoLogger
+from fastapi import Depends, FastAPI
 from fastapi.responses import JSONResponse
+
+from .middleware import log_requests_middleware
 
 app = FastAPI()
 app.middleware("http")(log_requests_middleware)

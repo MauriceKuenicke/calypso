@@ -1,8 +1,9 @@
+from typing import Awaitable, Callable
+
 import pytest
+from calypso.middleware import log_requests_middleware
 from fastapi import Request
 from fastapi.responses import JSONResponse
-from calypso.middleware import log_requests_middleware
-from typing import Callable, Awaitable
 
 
 @pytest.fixture

@@ -1,7 +1,8 @@
 import logging
+from typing import Any
+
 import pytest
 from calypso.modules.logger.get_logger import get_logger
-from typing import Any
 from pytest_mock import MockerFixture
 
 
