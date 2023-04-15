@@ -1,9 +1,10 @@
-from calypso.modules.logger import CalypsoLogger
-from typing import Callable, Awaitable
-from fastapi import Request, Response
 import random
 import string
 import time
+from typing import Awaitable, Callable
+
+from calypso.modules.logger import CalypsoLogger
+from fastapi import Request, Response
 
 
 async def log_requests_middleware(
