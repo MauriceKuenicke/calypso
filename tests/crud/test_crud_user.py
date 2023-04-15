@@ -12,6 +12,7 @@ def test_user_creation_is_successfull(db: Session) -> None:
     test_user: User = UserFactory.generate_random_user()
     new_user = crud_user.create(db=db, user=test_user)
     assert new_user == test_user
+    assert isinstance(new_user.__repr__(), str)
 
 
 def test_duplicate_user_creation_throws_error(db: Session) -> None:
