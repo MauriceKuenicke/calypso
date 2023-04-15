@@ -17,7 +17,14 @@ jobs:
         with:
           path: ~/.cache/pypoetry/virtualenvs
           key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
-      - run: poetry install
+
+      - name: Install Dependencies
+        run: |
+          poetry install
+          pre-commit run --all-files
+      
+      - name: Run Pre-Commit Hooks
+        run: poetry run pre-commit run --all-files
 
   # test:
   #   needs: pre-commit
