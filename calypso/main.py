@@ -1,32 +1,41 @@
+import os
+from os import path
+from typing import Awaitable, Callable
+
 from calypso import deps
 from calypso.db.session import SessionLocal
 from calypso.models import User
 from calypso.modules.logger import CalypsoLogger
 from calypso.startup import add_root_user_if_not_exist, get_root_user
-from fastapi import Depends, FastAPI
+from fastapi import Depends, FastAPI, Request
 from fastapi.responses import JSONResponse
-
-from .middleware import log_requests_middleware
 from starlette.responses import FileResponse
 from starlette.staticfiles import StaticFiles
-import os
-from os import path
+
+from .middleware import log_requests_middleware
 
 DEFAULT_STATIC_DIR = os.path.join(
-    os.path.abspath(os.path.dirname(__file__)), os.path.join("static", "calypso", "dist")
+    os.path.abspath(os.path.dirname(__file__)),
+    os.path.join("static", "calypso", "dist"),
 )
 
 app = FastAPI()
 app.middleware("http")(log_requests_middleware)
 
 frontend = FastAPI(openapi_url="")
+
+
 @frontend.middleware("http")
-async def default_page(request, call_next):
+async def default_page(
+    request: Request, call_next: Callable[[Request], Awaitable[FileResponse]]
+) -> FileResponse:
+    """Defaults to Frontend."""
     response = await call_next(request)
     if response.status_code == 404:
         if DEFAULT_STATIC_DIR:
             return FileResponse(path.join(DEFAULT_STATIC_DIR, "index.html"))
     return response
+
 
 @app.on_event("startup")
 def initialize_root_user() -> None:
@@ -45,6 +54,7 @@ def read_root(rid: str = Depends(deps.extract_request_id)) -> JSONResponse:
         headers={"cache-control": "no-cache"},
         status_code=200,
     )
+
 
 # we mount the frontend and app
 if DEFAULT_STATIC_DIR and path.isdir(DEFAULT_STATIC_DIR):
