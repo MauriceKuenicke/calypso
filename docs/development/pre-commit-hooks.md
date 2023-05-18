@@ -22,6 +22,7 @@ when running the hooks. Following hooks are currently being used:
 
 - [x] **black**
 - [x] **flake8**
+- [x] **isort**
 - [x] **mypy**
 - [x] **pydocstyle**
 - [x] **check-yaml**

@@ -5,7 +5,7 @@ hide:
   - footer
 ---
 <p align="center">
-  <a href="https://mauricekuenicke.github.io/UserAuth-MicroService/"><img src="./assets/logo/svg/Color logo - no background.svg" alt="Calypso" width="60%"></a>
+  <a href="https://mauricekuenicke.github.io/calypso/"><img src="./assets/logo/svg/Color logo - no background.svg" alt="Calypso" width="60%"></a>
 </p>
 
 <p align="center">
@@ -13,16 +13,16 @@ hide:
 </p>
 
 <p align="center">
-<a href="https://github.com/MauriceKuenicke/UserAuth-MicroService/actions/workflows/cicd.yml?query=workflow%3ACICD+branch%3Amain++" target="_blank">
-    <img src="https://github.com/MauriceKuenicke/UserAuth-MicroService/actions/workflows/cicd.yml/badge.svg?branch=main" alt="Test">
+<a href="https://github.com/MauriceKuenicke/calypso/actions/workflows/cicd.yml?query=workflow%3ACICD+branch%3Amain++" target="_blank">
+    <img src="https://github.com/MauriceKuenicke/calypso/actions/workflows/cicd.yml/badge.svg?branch=main" alt="Test">
 </a>
 </p>
 
 ---
 
-**Documentation**: <a href="https://mauricekuenicke.github.io/UserAuth-MicroService/" target="_blank">https://mauricekuenicke.github.io/UserAuth-MicroService/</a>
+**Documentation**: <a href="https://mauricekuenicke.github.io/calypso/" target="_blank">https://mauricekuenicke.github.io/calypso/</a>
 
-**Source Code**: <a href="https://github.com/MauriceKuenicke/UserAuth-MicroService" target="_blank">https://github.com/MauriceKuenicke/UserAuth-MicroService</a>
+**Source Code**: <a href="https://github.com/MauriceKuenicke/calypso" target="_blank">https://github.com/MauriceKuenicke/calypso</a>
 
 ---
 <p align="center">

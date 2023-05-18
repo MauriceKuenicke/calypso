@@ -30,10 +30,3 @@ Securely manage user authentication with a simple API interface. Lightweight, sc
 ---
 # ⚠️ Important
 This project is currently not safe for use in a production environment. Use at your own risk.
-
-
-# Local Database Setup
-You can run a local Postgres database using Docker. All you need is Docker installed + the latest official Postgres image.
-```sh
-docker run --name CalypsoDB -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=calypso -e POSTGRES_USER=admin -p 5432:5432 -d postgres
-```

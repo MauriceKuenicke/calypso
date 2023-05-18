@@ -1,0 +1,43 @@
+# Setting Up The Development Environment
+This guide assumes that all the main tools are already installed. This includes:
+
+- Git
+- Python
+- Poetry
+- NPM
+- Docker
+
+## Install Dependencies
+The source code is managed with [Poetry](https://python-poetry.org/). A simple
+```sh
+poetry install
+```
+should be enough to install all the necessary dependencies, including the Calypso CLI! You should also make sure that all the necessary Frontend dependencies are installed. This can be achieved by going into the static directory `calypso/static/calypso/`. Here, you should find a [Vue.js](https://vuejs.org/) project based on [Vite](https://vitejs.dev/) and managed with [npm](https://www.npmjs.com/). Run 
+```sh
+npm install
+```
+inside this directory to install all the necessary node modules.
+
+## Setting Up A Local Database
+### Docker Postgres Database
+You can run a local Postgres database using Docker. All you need is Docker installed + the latest official Postgres image.
+```sh
+docker run --name CalypsoDB -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=calypso -e POSTGRES_USER=admin -p 5432:5432 -d postgres
+```
+Copying the command above will create a container named `CalypsoDB` with a Postgres instance running on it. A database with the name `calypso` will be created, as well, as a 
+root admin account for the database access. The username will be `admin` and the password will be `admin`. You can change this by adjusting the values in the docker run command. The container also exposes the port number `5432` which will be mapped to the host port `5432`. This way, you can connect to the database locally via `localhost:5432`. These default values are also used as defaults in the configuration of the Calypso server.
+
+### Schema Migrations
+You will need to migrate all the database tables into your newly created Postgres instance. The database models are managed by [Alembic](https://alembic.sqlalchemy.org/en/latest/), so all the changes to the database models are are applied using revision files. You can bring your database to the latest version by running
+```sh
+alembic upgrade head
+```
+from inside the `calypso/alembic` directory.
+
+## Using The Calypso CLI
+With all the dependencies installed and a running Postgres instance, we are now ready to start the development server.
+Calypso ships with an integrated CLI tool to make some interactions with the server easier. One of the features is starting the complete service using a single command.
+
+```sh
+calypso run dev
+```
