@@ -26,7 +26,7 @@ class UserBase:
     is_admin = Column(Boolean, nullable=False, comment="User is Admin", default=False)
 
 
-class User(Base, UserBase):  # type: ignore
+class User(Base, UserBase):
     """Table user class."""
 
     __tablename__ = "user"

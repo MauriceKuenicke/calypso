@@ -28,8 +28,7 @@ class CRUDUser:
         error_code = 409
         error_text = "Username already exists."
 
-        stmnt = select(User.id).where(User.username == user.username)
-        result = db.execute(stmnt).scalar_one_or_none()
+        result = self.find_by_name(db=db, username=user.username)
         if result:
             CalypsoLogger.info(
                 "Found duplicate entry during user creation: %s",
@@ -44,7 +43,7 @@ class CRUDUser:
 
         Args:
             db (Session): Database Session to use.
-            user (User): User object to be persited.
+            user (User): User object to be persisted.
             idem (str): Request Identifier string.
 
         Returns:
@@ -61,3 +60,23 @@ class CRUDUser:
             extra={"idem": self.idem, "mod": __name__},
         )
         return user
+
+    def find_by_name(self, db: Session, username: Optional[str]) -> Optional[User]:
+        """Query a user from the database based on their username.
+
+        Args:
+            db (Session): Database Session tu use.
+            username (str): Username to search for.
+
+        Returns:
+            Optional(User): User object from the database.
+
+        """
+        if not username:
+            return None
+        stmnt = select(User).where(User.username == username)
+        result = db.execute(stmnt).scalar_one_or_none()
+        if result:
+            return result
+        else:
+            return None

@@ -12,7 +12,7 @@ bcrypt = "^4.0.1"
 python-dotenv = "^1.0.0"
 alembic = "^1.10.3"
 psycopg2 = "^2.9.6"
-sqlalchemy = "^2.0.9"
+sqlalchemy = {extras = ["mypy"], version = "^2.0.13"}
 
 
 [tool.poetry.group.docs.dependencies]
@@ -29,6 +29,7 @@ flake8 = "^6.0.0"
 black = "^23.3.0"
 pre-commit = "^3.2.2"
 pytest-mock = "^3.10.0"
+sqlalchemy = {extras = ["mypy"], version = "^2.0.13"}
 
 [build-system]
 requires = ["poetry-core"]
