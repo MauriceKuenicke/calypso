@@ -15,7 +15,7 @@
                     Sign In
                 </v-btn>
                 <v-btn @click="test">
-                    Test
+                    Backend Check
                 </v-btn>
             </v-form>
         </v-card>
