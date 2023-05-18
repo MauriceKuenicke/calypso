@@ -1,9 +1,9 @@
 from __future__ import with_statement
 
-import os
 from logging.config import fileConfig
 
 from alembic import context
+from calypso.config import SQLALCHEMY_DATABASE_URI
 from calypso.models import Base  # noqa
 from sqlalchemy import engine_from_config, pool
 
@@ -15,11 +15,7 @@ target_metadata = Base.metadata
 
 
 def get_url():
-    user = os.getenv("POSTGRES_USER", "admin")
-    password = os.getenv("POSTGRES_PASSWORD", "admin")
-    server = os.getenv("POSTGRES_SERVER", "localhost:5432")
-    db = os.getenv("POSTGRES_DB", "calypso")
-    return f"postgresql://{user}:{password}@{server}/{db}"
+    return SQLALCHEMY_DATABASE_URI
 
 
 def run_migrations_online():
