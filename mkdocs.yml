@@ -63,6 +63,7 @@ extra:
 nav:
   - Home: index.md
   - Setup: setup/documentation.md
+  - Calypso CLI: cli/index.md
   - Contribute: 
       - Dev-Environment: development/environment.md
       - Pre-Commit Hooks: development/pre-commit-hooks.md
