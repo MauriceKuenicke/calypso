@@ -1,8 +1,8 @@
-import os
 from os import path
 from typing import Awaitable, Callable
 
 from calypso import deps
+from calypso.config import DEFAULT_STATIC_DIR
 from calypso.db.session import SessionLocal
 from calypso.models import User
 from calypso.modules.logger import CalypsoLogger
@@ -13,11 +13,6 @@ from starlette.responses import FileResponse
 from starlette.staticfiles import StaticFiles
 
 from .middleware import log_requests_middleware
-
-DEFAULT_STATIC_DIR = os.path.join(
-    os.path.abspath(os.path.dirname(__file__)),
-    os.path.join("static", "calypso", "dist"),
-)
 
 app = FastAPI()
 app.middleware("http")(log_requests_middleware)
@@ -45,7 +40,7 @@ def initialize_root_user() -> None:
         add_root_user_if_not_exist(db, root_user)
 
 
-@app.get("/healthcheck", include_in_schema=False)
+@app.get("/api/healthcheck", include_in_schema=False)
 def read_root(rid: str = Depends(deps.extract_request_id)) -> JSONResponse:
     """Healthcheck Endpoint."""
     CalypsoLogger.info("Healthcheck received.", extra={"idem": rid, "mod": __name__})

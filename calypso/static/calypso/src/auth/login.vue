@@ -14,12 +14,17 @@
                     variant="elevated">
                     Sign In
                 </v-btn>
+                <v-btn @click="test">
+                    Test
+                </v-btn>
             </v-form>
         </v-card>
     </div>
 </template>
   
 <script>
+import axios from 'axios'
+
 export default {
     name: "LoginPage",
     data: () => ({
@@ -30,6 +35,9 @@ export default {
     }),
 
     methods: {
+        async test() {
+            console.log(await axios.get('/api/healthcheck'))
+        },
         onSubmit() {
             if (!this.form) return
 
@@ -53,6 +61,6 @@ export default {
 .login__card {
     margin: auto;
     margin-top: 30vh;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.1);
 }
 </style>
