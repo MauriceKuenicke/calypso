@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     build: {
         transpile: ['vuetify'],
     },
+    ssr: false,
 
     vite: {
         server: {

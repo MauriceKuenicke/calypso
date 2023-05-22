@@ -1,19 +1,15 @@
 <template>
   <div>
-    <NuxtLayout :name="currentLayout">
-      <NuxtPage />
-    </NuxtLayout>
+    <NuxtPage />
   </div>
 </template>
 
 <script setup lang="ts">
-const defaultTitle = 'Maurice Künicke';
+const defaultTitle = 'Calypso Server';
 onMounted(() => {
   document.title = defaultTitle;
 });
 
-
-const currentLayout: Ref<string> = ref('default')
 </script>
 
 <style></style>

@@ -1,24 +1,22 @@
 <template>
-    <div class="login__wrapper">
-        <v-card class="login__card px-6 py-8 card-max-width">
-            <v-form v-model="form" @submit.prevent="onSubmit">
-                <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" clearable
-                    label="User"></v-text-field>
+    <v-card class="login__card px-6 py-8 card-max-width">
+        <v-form v-model="form" @submit.prevent="onSubmit">
+            <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" clearable
+                label="User"></v-text-field>
 
-                <v-text-field v-model="password" type="password" :readonly="loading" :rules="[required]" clearable
-                    label="Password" placeholder="Enter your password"></v-text-field>
+            <v-text-field v-model="password" type="password" :readonly="loading" :rules="[required]" clearable
+                label="Password" placeholder="Enter your password"></v-text-field>
 
-                <br>
+            <br>
 
-                <v-btn :disabled="!form" :loading="loading" block color="primary" size="large" variant="elevated">
-                    Sign In
-                </v-btn>
-                <v-btn @click="test">
-                    Backend Check
-                </v-btn>
-            </v-form>
-        </v-card>
-    </div>
+            <v-btn :disabled="!form" :loading="loading" block color="primary" size="large" variant="elevated" type="submit">
+                Sign In
+            </v-btn>
+            <v-btn @click="test">
+                Backend Check
+            </v-btn>
+        </v-form>
+    </v-card>
 </template>
 
 <script setup lang="ts">
@@ -47,12 +45,6 @@ function required(v: any) {
 </script>
 
 <style scoped>
-.login__wrapper {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
-
 .login__card {
     margin: auto;
     margin-top: 30vh;
