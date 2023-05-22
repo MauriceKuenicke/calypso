@@ -1,6 +1,6 @@
 <template>
     <div class="login__wrapper">
-        <v-card class="login__card px-6 py-8" max-width="344">
+        <v-card class="login__card px-6 py-8 card-max-width">
             <v-form v-model="form" @submit.prevent="onSubmit">
                 <v-text-field v-model="email" :readonly="loading" :rules="[required]" class="mb-2" clearable
                     label="User"></v-text-field>
@@ -10,8 +10,7 @@
 
                 <br>
 
-                <v-btn :disabled="!form" :loading="loading" block color="primary" size="large" type="submit"
-                    variant="elevated">
+                <v-btn :disabled="!form" :loading="loading" block color="primary" size="large" variant="elevated">
                     Sign In
                 </v-btn>
                 <v-btn @click="test">
@@ -21,36 +20,32 @@
         </v-card>
     </div>
 </template>
-  
-<script>
+
+<script setup lang="ts">
 import axios from 'axios'
 
-export default {
-    name: "LoginPage",
-    data: () => ({
-        form: false,
-        email: null,
-        password: null,
-        loading: false,
-    }),
+const form = ref<boolean>(false)
+const loading = ref<boolean>(false)
+const email = ref<String | null>(null)
+const password = ref<String | null>(null)
 
-    methods: {
-        async test() {
-            console.log(await axios.get('/api/healthcheck'))
-        },
-        onSubmit() {
-            if (!this.form) return
+async function test() {
+    console.log(await axios.get('/api/healthcheck'))
+}
 
-            this.loading = true
+function onSubmit() {
+    if (!form.value) return
 
-            setTimeout(() => (this.loading = false), 2000)
-        },
-        required(v) {
-            return !!v || 'Field is required'
-        },
-    },
+    loading.value = true
+
+    setTimeout(() => (loading.value = false), 2000)
+}
+
+function required(v: any) {
+    return !!v || 'Field is required'
 }
 </script>
+
 <style scoped>
 .login__wrapper {
     position: fixed;
@@ -62,5 +57,9 @@ export default {
     margin: auto;
     margin-top: 30vh;
     background: rgba(0, 0, 0, 0.1);
+}
+
+.card-max-width {
+    max-width: 344px;
 }
 </style>
