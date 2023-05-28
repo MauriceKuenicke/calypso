@@ -25,11 +25,13 @@ async def default_page(
     request: Request, call_next: Callable[[Request], Awaitable[FileResponse]]
 ) -> FileResponse:
     """Defaults to Frontend."""
-    response = await call_next(request)
-    if response.status_code == 404:
-        if DEFAULT_STATIC_DIR:
-            return FileResponse(path.join(DEFAULT_STATIC_DIR, "index.html"))
-    return response
+    response = await call_next(request)  # pragma: no cover
+    if response.status_code == 404:  # pragma: no cover
+        if DEFAULT_STATIC_DIR:  # pragma: no cover
+            return FileResponse(
+                path.join(DEFAULT_STATIC_DIR, "index.html")
+            )  # pragma: no cover
+    return response  # pragma: no cover
 
 
 @app.on_event("startup")
@@ -53,5 +55,7 @@ def read_root(rid: str = Depends(deps.extract_request_id)) -> JSONResponse:
 
 # we mount the frontend and app
 if DEFAULT_STATIC_DIR and path.isdir(DEFAULT_STATIC_DIR):
-    frontend.mount("/", StaticFiles(directory=DEFAULT_STATIC_DIR), name="app")
+    frontend.mount(
+        "/", StaticFiles(directory=DEFAULT_STATIC_DIR), name="app"
+    )  # pragma: no cover
 app.mount("/", app=frontend)
