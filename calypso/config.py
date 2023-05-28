@@ -1,3 +1,5 @@
+import os
+
 from starlette.config import Config
 
 config = Config(".env")
@@ -14,3 +16,7 @@ SQLALCHEMY_DATABASE_URI = f"postgresql+psycopg2://{DATABASE_USER}:{DATABASE_PASS
 
 
 ENV = config("ENV", default="local")
+DEFAULT_STATIC_DIR = os.path.join(
+    os.path.abspath(os.path.dirname(__file__)),
+    os.path.join("static", "calypso", "dist"),
+)

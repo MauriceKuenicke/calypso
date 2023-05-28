@@ -8,8 +8,6 @@ edit_uri: edit/main/docs/
 repo_name: MauriceKuenicke/calypso
 repo_url: https://github.com/MauriceKuenicke/calypso
 
-# Copyright
-copyright: Copyright &copy; 2023 Maurice Künicke
 
 # Configuration
 theme:
@@ -36,12 +34,11 @@ theme:
         name: Switch to light mode
 
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Outfit
+    code: Outfit Mono
 
   features:
-    - navigation.tracking
-    - navigation.tabs
+    - navigation.tracking 
     - navigation.tabs.sticky
     - navigation.sections
     - toc.integrate
@@ -51,7 +48,7 @@ theme:
     - announce.dismiss
     - navigation.footer
     - content.action.edit
-    - content.action.view
+    #- content.action.view
     - content.code.copy
     - content.code.annotate
 
@@ -64,9 +61,11 @@ extra:
 # Page Tree
 nav:
   - Home: index.md
-  - Development: 
+  - Setup: setup/documentation.md
+  - Calypso CLI: cli/index.md
+  - Contribute: 
+      - Dev-Environment: development/environment.md
       - Pre-Commit Hooks: development/pre-commit-hooks.md
-      - Documentation: development/documentation.md
 
 # Plugins
 plugins:
