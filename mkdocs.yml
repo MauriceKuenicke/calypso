@@ -34,12 +34,11 @@ theme:
         name: Switch to light mode
 
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: Outfit
+    code: Outfit Mono
 
   features:
-    - navigation.tracking
-    - navigation.tabs
+    - navigation.tracking 
     - navigation.tabs.sticky
     - navigation.sections
     - toc.integrate
