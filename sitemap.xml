@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://mauricekuenicke.github.io/calypso/</loc>
+         <lastmod>2023-05-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mauricekuenicke.github.io/calypso/cli/</loc>
+         <lastmod>2023-05-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mauricekuenicke.github.io/calypso/development/environment/</loc>
+         <lastmod>2023-05-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mauricekuenicke.github.io/calypso/development/pre-commit-hooks/</loc>
+         <lastmod>2023-05-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://mauricekuenicke.github.io/calypso/setup/documentation/</loc>
+         <lastmod>2023-05-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>
