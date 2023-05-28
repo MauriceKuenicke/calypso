@@ -1,7 +1,7 @@
 from calypso.crud import CRUDUser
 from calypso.models import User
 from calypso.modules import crypto
-from calypso.modules.logger import CalypsoLogger
+import calypso.modules.logger as logger
 from sqlalchemy.orm import Session
 
 
@@ -23,7 +23,8 @@ def add_root_user_if_not_exist(db: Session, root_user: User) -> None:
     crud_user = CRUDUser(User)
     if not crud_user.find_by_name(db=db, username=root_user.username):
         user: User = crud_user.create(db=db, user=root_user)
-        CalypsoLogger.info(
-            f"Root user '{user.username}' successfully created.",
-            extra={"idem": "STARTUP", "mod": __name__},
+        logger.CalypsoLogger.info(
+            info=f"Root user '{user.username}' successfully created.",
+            idem="STARTUP",
+            module=__name__,
         )

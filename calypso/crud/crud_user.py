@@ -1,7 +1,7 @@
 from typing import Optional, Type
 
 from calypso.models import User
-from calypso.modules.logger import CalypsoLogger
+import calypso.modules.logger as logger
 from fastapi.exceptions import HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -30,10 +30,10 @@ class CRUDUser:
 
         result = self.find_by_name(db=db, username=user.username)
         if result:
-            CalypsoLogger.info(
-                "Found duplicate entry during user creation: %s",
-                result,
-                extra={"idem": self.idem, "mod": __name__},
+            logger.CalypsoLogger.info(
+                info=f"Found duplicate entry during user creation: {result}",
+                idem=self.idem,
+                module=__name__,
             )
             raise HTTPException(status_code=error_code, detail=error_text)
         return None
@@ -54,10 +54,10 @@ class CRUDUser:
 
         db.add(user)
         db.commit()
-        CalypsoLogger.info(
-            "Successfully registered new user: %s",
-            user.username,
-            extra={"idem": self.idem, "mod": __name__},
+        logger.CalypsoLogger.info(
+            info=f"Successfully registered new user: {user.username}",
+            idem=self.idem,
+            module=__name__,
         )
         return user
 

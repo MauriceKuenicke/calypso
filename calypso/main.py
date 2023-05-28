@@ -5,7 +5,7 @@ from calypso import deps
 from calypso.config import DEFAULT_STATIC_DIR
 from calypso.db.session import SessionLocal
 from calypso.models import User
-from calypso.modules.logger import CalypsoLogger
+import calypso.modules.logger as logger
 from calypso.startup import add_root_user_if_not_exist, get_root_user
 from fastapi import Depends, FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -45,7 +45,7 @@ def initialize_root_user() -> None:
 @app.get("/api/healthcheck", include_in_schema=False)
 def read_root(rid: str = Depends(deps.extract_request_id)) -> JSONResponse:
     """Healthcheck Endpoint."""
-    CalypsoLogger.info("Healthcheck received.", extra={"idem": rid, "mod": __name__})
+    logger.CalypsoLogger.info("Healthcheck received.", idem=rid, module=__name__)
     return JSONResponse(
         content={"status": "available"},
         headers={"cache-control": "no-cache"},

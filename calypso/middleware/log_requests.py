@@ -3,8 +3,13 @@ import string
 import time
 from typing import Awaitable, Callable
 
-from calypso.modules.logger import CalypsoLogger
+import calypso.modules.logger as logger
 from fastapi import Request, Response
+
+
+def _path_is_blacklisted(path: str):
+    blacklist = ["_nuxt", "openapi.json", "favicon.ico"]
+    return any(sub_string in path for sub_string in blacklist)
 
 
 async def log_requests_middleware(
@@ -33,22 +38,18 @@ async def log_requests_middleware(
         )
     )
 
-    CalypsoLogger.info(
-        f"{request.method} Request at {request.url.path}",
-        extra={"idem": idem, "mod": __name__},
-    )
-
     start_time = time.time()
     response = await call_next(request)
     process_time = (time.time() - start_time) * 1000
     formatted_process_time = "{0:.2f}".format(process_time)
 
-    CalypsoLogger.info(
-        f"Completed in: {formatted_process_time}ms",
-        extra={"idem": idem, "mod": __name__},
-    )
-    CalypsoLogger.info(
-        f"Status Code: {response.status_code}", extra={"idem": idem, "mod": __name__}
-    )
+    if not _path_is_blacklisted(request.url.path):
+        logger.CalypsoLogger.write_to_request_log(
+            request_type=request.method,
+            response_time_ms=float(formatted_process_time),
+            status_code=response.status_code,
+            request_identifier=idem,
+            path=request.url.path,
+        )
 
     return response

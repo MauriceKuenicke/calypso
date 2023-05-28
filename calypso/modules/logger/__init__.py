@@ -1,1 +1,1 @@
-from .get_logger import CalypsoLogger  # NOQA
+from .CalypsoLoggerClass import CalypsoLogger  # NOQA
